@@ -1,9 +1,10 @@
 const router = require('express').Router();
+// const { validateLogin, validateRegister } = require('./auth-middleware')
 const User = require('../users/users-model')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../secrets');
-router.post('/register', async (req, res, next) => {
+router.post('/register',  async (req, res, next) => {
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -42,7 +43,7 @@ router.post('/register', async (req, res, next) => {
        }
 });
 
-router.post('/login', async (req, res, next) => {
+router.post('/login',  async (req, res, next) => {
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -74,7 +75,7 @@ router.post('/login', async (req, res, next) => {
           const token = buildToken(existingUser)
           req.session = existingUser
           res.json({
-            message: `${existingUser.username} is back!`,
+            message: `welcome ${existingUser.username}`,
             token
           })
         } else {
